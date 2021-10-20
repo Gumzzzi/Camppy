@@ -54,8 +54,10 @@ public class LoginServlet extends HttpServlet {
 		
 		String result = dao.login(vo.getId(), vo.getPw());
 
+		System.out.println(result+" dao.login 결과");
+		
 		//System.out.println(dao.login(id, pw));
-		if(!result.equals("")){
+		if(result.equals(id)){
 			Cookie c = new Cookie("loginUser", URLEncoder.encode(result,"UTF-8"));
 			c.setMaxAge(24*60*60);
 			c.setPath("path=/");

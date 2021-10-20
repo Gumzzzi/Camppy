@@ -18,14 +18,11 @@ public class UserDAO extends DAO {
 
 	public String login(String id, String pw) {
 		connect();
-
 		String sql = "select * from camppy_user where user_id=?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
-
 			psmt.setString(1, id);
-
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
