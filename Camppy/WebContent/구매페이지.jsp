@@ -66,8 +66,8 @@
 			<div class="row gx-4 gx-lg-5 justify-content-center">
 				<div class="col-md-10 col-lg-8 col-xl-7">
 					<div class="post-heading">
-						<h1>Etc Page</h1>
-						<h2 class="subheading">소제목</h2>
+						<h1></h1>
+						<h2 class="subheading"></h2>
 
 
 

@@ -78,7 +78,7 @@
 
 						<h1 id="pageInfo">Tent Page</h1>
 
-						<span class="subheading">소제목</span>
+						<span class="subheading"></span>
 					</div>
 				</div>
 			</div>
