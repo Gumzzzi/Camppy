@@ -8,7 +8,6 @@
 <body>
 
 	<form id="CH" method="post" enctype="multipart/form-data" onsubmit="SendEvent(event)">
-	        상품번호:   <input type="text" name="i_num"><br>
 	        상품이름:   <input type="text" name="i_name"><br>
 	        상품이미지:  <input type="file" name="i_img"><br>
 	        상품정보:   <input type="text" name="i_info"><br>
@@ -52,7 +51,8 @@
 		function ScreenOutput (data){
 			let divData = $('<div />').addClass('data');
 			$(divData).append(
-				$('<div />').html('<imp width = "500px" src="../save/'+data.i_img+'">'), //이미지 생성 
+				//console.log((d))
+				$('<div />').html('<img width = "400px" src="../save/'+data.i_info+'">'), //이미지 생성 
 				$('<div />').html(data.i_name),  //상품이름
 				$('<div />').html(data.ori_p)  //상품가격
 			);
