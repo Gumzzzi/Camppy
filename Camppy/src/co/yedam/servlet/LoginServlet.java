@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
+		response.setContentType("text/json; charset=UTF-8");
 		
 		PrintWriter out = response.getWriter();
 		Gson gson = new GsonBuilder().create();
@@ -54,18 +54,26 @@ public class LoginServlet extends HttpServlet {
 		
 		String result = dao.login(vo.getId(), vo.getPw());
 
-		System.out.println(result+" dao.login 결과");
+//		System.out.println(result+" dao.login 결과");
 		
 		//System.out.println(dao.login(id, pw));
-		if(result.equals(id)){
-			Cookie c = new Cookie("loginUser", URLEncoder.encode(result,"UTF-8"));
-			c.setMaxAge(24*60*60);
-			c.setPath("path=/");
-			response.addCookie(c);
-			response.sendRedirect("http://localhost/Camppy/index.html");
-		} else {
-			response.sendRedirect("http://localhost/Camppy/login.html");
+		if(result.equals(id)) {
+			out.println(gson.toJson(vo.getId()));
 		}
+		else {
+			out.println("로그인에 실패했습니다");
+		}
+		
+		
+//		if(result.equals(id)){
+//			Cookie c = new Cookie("loginUser", URLEncoder.encode(result,"UTF-8"));
+//			c.setMaxAge(3*60*60);
+//			c.setPath("path=/");
+//			response.addCookie(c);
+//			response.sendRedirect("http://localhost/Camppy/index.html");
+//		} else {
+//			response.sendRedirect("http://localhost/Camppy/login.html");
+//		}
 		
 //		out.println(result);
 //		System.out.println(result);

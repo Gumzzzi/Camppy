@@ -3,6 +3,7 @@
 // y 에 "=" 이후의 문자열인 value의 값을 가지게된다
 // 현재 로그인한 유저의 ID가 value 이므로 y를 리턴받게했다
 
+// 세션쿠키를 사용하게됬으므로 사용하지 않는 함수가됬습니다..
 function getCookie() {
     var x, y;
     var val = document.cookie.split(';');
@@ -16,18 +17,26 @@ function getCookie() {
     }
 }
 
+
+
 // LoginUser의 값을 없애 로그아웃 처리하는것
 // expire가 0 으로 설정되고 삭제되는것이 아니라
 // value가 "" 공백처리되는것이며 세션이 종료되는 시점에
 // 쿠키자체의 수명이 다하여 사라지는것 
 
 function delUserCookie() {
-    if (!(getCookie === "")) {
+
+	if(!(sessionStorage.getItem('LoginUser')=="")){
+		sessoionStorage.removeItem('LoginUser');
+	}
+
+
+/*    if (!(getCookie === "")) {
         document.cookie = 'loginUser=; expires=0; path/';
         location.reload();
         alert('로그아웃되었습니다.');
 
-    }
+    }*/
 }
 
 // 로그인 쿠키를 가졌는지 아닌지 비교해서
@@ -38,10 +47,14 @@ function LogioCreate() {
     let login, logout, weclome
     let ul = $('#mom');
 
+	let userid = sessionStorage.getItem('LoginUser');
+	
     console.log(ul);
-    console.log(document.cookie.length);
+    console.log(userid+" logio");
+    
+   	
 
-    if ((document.cookie.length === 0) || (document.cookie.length === 10)) {
+    if(sessionStorage.getItem('LoginUser')==null) {
         login = $('<li />').attr('class', 'nav-item').attr('id', 'loginBtn')
         $(login).html(
             '<a class="nav-link px-lg-3 py-3 py-lg-4">Login</a>'
@@ -59,7 +72,7 @@ function LogioCreate() {
         );
         ul.append(logout);
 
-        let id = getCookie();
+        let id = userid;
         welcome = $('<li />').attr('class', 'nav-item').attr('id', 'welcometxt');
         $(welcome).html(
             `<a class="nav-link px-lg-3 py-3 py-lg-4">${id}님 안녕하세요!</a>`
