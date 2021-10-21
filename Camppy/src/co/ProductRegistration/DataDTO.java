@@ -27,9 +27,9 @@ public class DataDTO extends DAO {
 				vo.setCtgr(rs.getString("CATEGORI"));
 				vo.setP_comp(rs.getString("PRODUCT_COMPANY"));
 				vo.setP_cont(rs.getString("PRODUCT_CONTRY"));
-				vo.setOri_p(rs.getInt("ORIGIN_PRICE"));
-				vo.setOff_p(rs.getInt("OFF_PRICE"));
-				vo.setStock(rs.getInt("AV_STOCK"));
+				vo.setOri_p(rs.getString("ORIGIN_PRICE"));
+				vo.setOff_p(rs.getString("OFF_PRICE"));
+				vo.setStock(rs.getString("AV_STOCK"));
 				list.add(vo);	
 			}
 		} catch (SQLException e) {
@@ -38,34 +38,28 @@ public class DataDTO extends DAO {
 		return list;
 	}
 	public ItemVO uploadFile(String i_name, String i_info, String i_img, String ctgr, 
-							 String p_comp, String p_cont, Integer ori_p, Integer off_p, Integer stock) {
+							 String p_comp, String p_cont, String ori_p, String off_p, String stock) {
+
+		
 		connect();
-		String sql = "insert into fileboard values(?,?,?,?,?,?,?,?, sysdate )";
+		String sql = "insert into CAMPPY_ITEM values(CAMPPY_ITEM_SEQ.nextval,?,?,?,?,?,?,?,?,? )";
 		
 		try {
-			int NN = -1;
-			stmt = conn.prepareStatement(sql);
-			rs = stmt.executeQuery("select CAMPPY_ITEM_SEQ.nextval");
-			if(rs.next()) {
-				NN = rs.getInt(1);
-			}
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, NN);
-			psmt.setString(2, i_name);
-			psmt.setString(3, i_info);
-			psmt.setString(4, i_img);
-			psmt.setString(5, ctgr);
-			psmt.setString(6, p_comp);
-			psmt.setString(7, p_cont);
-			psmt.setInt(8, ori_p);
-			psmt.setInt(9, off_p);
-			psmt.setInt(10, stock);
+			psmt.setString(1, i_name);
+			psmt.setString(2, i_info);
+			psmt.setString(3, i_img);
+			psmt.setString(4, ctgr);
+			psmt.setString(5, p_comp);
+			psmt.setString(6, p_cont);
+			psmt.setString(7, ori_p);
+			psmt.setString(8, off_p);
+			psmt.setString(9, stock);
 			
 			int r = psmt.executeUpdate();
 			System.out.print(r + "건 입력완료");
 			
 			ItemVO vo = new ItemVO();
-			vo.setI_num(NN);
 			vo.setI_name(i_name);
 			vo.setI_info(i_info);
 			vo.setI_img(i_img);
@@ -85,6 +79,9 @@ public class DataDTO extends DAO {
 		return null;
 		
 	}
+
+	
+	
 	
 	
 }
