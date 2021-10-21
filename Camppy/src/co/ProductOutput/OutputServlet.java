@@ -32,23 +32,15 @@ public class OutputServlet extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 		String check = request.getParameter("check");
-		
-		System.out.println("check"+check);
-		
 		OutputDAO dao = OutputDAO.getInstance();
 		Gson gson = new GsonBuilder().create();
 
 		if (check.equals("Tent")) {
-			System.out.println(check);
 			System.out.println("현재 텐트 페이지 입니다");
 			List<ItemVO> listvo = dao.getTentList();
-			System.out.println(listvo);
-			System.out.println("gson" + (gson.toJson(listvo)) );
 			out.println(gson.toJson(listvo));
 			
 
-			
-			
 			
 		} else if (check.equals("SleepingBag")) {
 			System.out.println("침낭 페이지 입니다");

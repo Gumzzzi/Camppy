@@ -6,8 +6,10 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Etc Page</title>
+<title>테스트 사이트입니다.</title>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
@@ -80,26 +82,30 @@
 		
 		$.ajax({
 			url:'./OutputServlet',
-			//dataType:"json",
+			dataType:"json",
 			data: {
-				check : "Tent"
+				check : "Tent",
+				check : "SleepingBag"
 				},
+				
 			success: function(result){
+				console.log(result);
 			   for(let data of result){
+				   console.log((ScreenView(data)));
 				$('#ScreenOutput').append(ScreenView(data));
 			   }
 			},
+			
 			error: function(out){
 				console.log(out);
 			}
-			
 		});
 	
 		function ScreenView (data){
-			console.log(data);
+
 			let divData = $('<div />').addClass('data');
 			$(divData).append(
-				$('<div />').html('<imp width = "500px" src="../save/'+data.i_img+'">'), //이미지 생성 
+				$('<div />').html('<img width = "300px" src="./img2/'+data.i_info+'">'), //이미지 생성 
 				$('<div />').html(data.i_name),  //상품이름
 				$('<div />').html(data.ori_p)  //상품가격
 			);
@@ -107,9 +113,22 @@
 		}
 	
 	</script>
+ <main class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                       
+                       
+                       <!-- 아이템 추가하는 위치 -->
+                    <div id="ScreenOutput"></div>
+                       
+                       
+                    </div>
+                </div>
+            </div>
+        </main>
 
-
-	<div id="ScreenOutput"></div>
+	
 
 
 	<!-- Footer-->

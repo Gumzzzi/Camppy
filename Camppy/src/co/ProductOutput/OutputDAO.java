@@ -28,16 +28,11 @@ public class OutputDAO extends DAO {
 				rs = stmt.executeQuery("select * from CAMPPY_ITEM where CATEGORI = '텐트'");
 				while(rs.next()){
 					ItemVO vo = new ItemVO();
-					vo.setI_img(rs.getString("ITEM_IMAGE"));
+					vo.setI_info(rs.getString("ITEM_INFORMATION"));
 					vo.setI_name(rs.getString("ITEM_NAME"));
 					vo.setOri_p(rs.getString("ORIGIN_PRICE"));
-					list.add(vo);
-					
-					
+					list.add(vo);	
 				}
-				
-				System.out.println("DAO" +list);
-				
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}finally {
@@ -56,9 +51,9 @@ public class OutputDAO extends DAO {
 					rs = stmt.executeQuery("select * from CAMPPY_ITEM where CATEGORI = '침낭'");
 					while(rs.next()){
 						ItemVO vo = new ItemVO();
-						vo.setI_img(rs.getString("i_img"));
-						vo.setI_name(rs.getString("i_name"));
-						vo.setOri_p(rs.getString("ori_p"));
+						vo.setI_info(rs.getString("ITEM_INFORMATION"));
+						vo.setI_name(rs.getString("ITEM_NAME"));
+						vo.setOri_p(rs.getString("ORIGIN_PRICE"));
 						list.add(vo);
 					}
 				} catch (SQLException e) {

@@ -36,7 +36,7 @@ public class AddFileServlet extends HttpServlet {
 		ServletContext context = getServletContext();
 		
 		//저장폴더
-		String saveDir = context.getRealPath("save");
+		String saveDir = context.getRealPath("img2");
 		int maxSize = 1024*1024*30;
 		String encoding =  "UTF-8";
 		
