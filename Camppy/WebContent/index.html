@@ -26,9 +26,9 @@
 </head>
 <body>
 	<!-- Navigation-->
-	<nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+	<nav class="navbar navbar-expand-lg navbar-light" id="mainNav" style="text-align: center">
 		<div class="container px-4 px-lg-5">
-			<a class="navbar-brand" href="index.html">Index Page</a>
+			<a class="navbar-brand" href="index.html">캠핑의 모든것</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
 				aria-controls="navbarResponsive" aria-expanded="false"
@@ -38,9 +38,11 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ms-auto py-4 py-lg-0">
 					<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-						href="tent.html">Tent</a></li>
+						href="CAMPPY_ITEM/ajax_Item.html">상품 등록</a></li>
 					<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-						href="sleepingbag.html">Sleeping Bag</a></li>
+						href="Camping.jsp?check=Tent">Tent</a></li>
+					<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
+						href="Camping.jsp?check=SleepingBag">Sleeping Bag</a></li>
 					<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
 						href="etc.html">Etc</a></li>
 					<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
@@ -84,165 +86,47 @@
 				<!--  이부분에 Div를 추가해서 사이트 이용방법등을 설명하는것이 좋을것같습니다  -->
 
 
-				<br> [캠핑체험] 무슨무슨텐트 ( 어디어디 메이커)
-
-
-				<div
-					style="padding: 0 0 10px 5px; font: 11px dotum; letter-spacing: -1px; color: #666666">
-					원터치 텐트</div>
-				<table border="0" cellpadding="0" cellspacing="0" class="top">
-					<tbody>
-						<tr>
-							<td height="2"></td>
-						</tr>
-						<!--tr><td colspan="2"><span style="padding-bottom:5px; padding-left:14px; color:#EF1C21">절찬리 판매중!!</span></td></tr-->
-
-						<tr>
-							<th>대여가격 :</th>
-							<td><b><span id="price">25,000</span>원</b></td>
-						</tr>
-						<tr>
-							<th>할인전 가격 :</th>
-							<td><span id="consumer">29,000</span>원</td>
-						</tr>
-					</tbody>
-				</table>
-				<table border="0" cellpadding="0" cellspacing="0">
-					<tbody>
-						<tr>
-							<td height="5"></td>
-						</tr>
-						<tr height="">
-							<th>상품상태 :</th>
-							<td>신상품</td>
-						</tr>
-						<tr>
-							<th>제조사 :</th>
-							
-						</tr>
-						<tr>
-							<th>브랜드 :</th>
-							
-						</tr>
-						<tr>
-							<th>정 원 :</th>
-							
-						</tr>
-						<tr>
-							<th>수령방법 :</th>
-							<td>택배 및 매장방문수령</td>
-						</tr>
-						<tr>
-							<th>설치 난이도 :</th>
-							
-						</tr>
-						<tr>
-							<th>재 고 :</th>
-							<td>전화문의</td>
-						</tr>
-						<tr>
-							<th>기준 대여일 :</th>
-							<!-- <td><b>1박 2일 / 1박 추가시 30% 증가</b></td> -->
-						</tr>
-						<input type="hidden" name="ea" step="1" min="1" max="0" value="1">
-
-						<tr>
-							<th>제품상태 :</th>
-							
-						</tr>
-					</tbody>
-				</table>
-
-
-
-				<!-- 필수 옵션 일체형 -->
-				<table border="0" cellpadding="0" cellspacing="0" class="top">
-					<tbody>
-						<tr>
-							<td height="6"></td>
-						</tr>
-						<tr>
-							<th valign="top">대여일 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<td>
-								<div>
-									<select name="opt[]"
-										onchange="chkOption(this);chkOptimg();nsGodo_MultiOption.set();"
-										required="" fld_esssential="" msgr="대여일 선택을 해주세요">
-										<option value="">== 옵션선택 ==</option>
-										<option value="매장방문(1박2일)">매장방문(1박2일)</option>
-										<option value="매장방문(2박3일)">매장방문(2박3일) (32,500원)</option>
-										<option value="매장방문(3박4일)">매장방문(3박4일) (40,000원)</option>
-										<option value="매장방문(4박5일)">매장방문(4박5일) (47,500원)</option>
-										<option value="매장방문(5박6일)">매장방문(5박6일) (52,500원)</option>
-										<option value="택배(1박2일)⇒(왕복택배비)">택배(1박2일)⇒(왕복택배비)
-											(35,000원)</option>
-										<option value="택배(2박3일)⇒(왕복택배비)">택배(2박3일)⇒(왕복택배비)
-											(42,500원)</option>
-										<option value="택배(3박4일)⇒(왕복택배비)">택배(3박4일)⇒(왕복택배비)
-											(50,000원)</option>
-										<option value="택배(4박5일)⇒(왕복택배비)">택배(4박5일)⇒(왕복택배비)
-											(57,500원)</option>
-									</select>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td height="6"></td>
-						</tr>
-					</tbody>
-				</table>
-
 				
 
 
-				
-        <!-- Footer-->
-        <footer class="border-top">
-            <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-md-10 col-lg-8 col-xl-7">
-                        <ul class="list-inline text-center">
-                            <li class="list-inline-item">
-                                <a href="#!">
-                                    <span class="fa-stack fa-lg">
-                                        <i
-									class="fas fa-circle fa-stack-2x"></i>
-                                        <i
-									class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#!">
-                                    <span class="fa-stack fa-lg">
-                                        <i
-									class="fas fa-circle fa-stack-2x"></i>
-                                        <i
-									class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#!">
-                                    <span class="fa-stack fa-lg">
-                                        <i
-									class="fas fa-circle fa-stack-2x"></i>
-                                        <i
-									class="fab fa-github fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
-                        <div
-						class="small text-center text-muted fst-italic">Yedam &copy; Project 2021</div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-    </body>
+
+
+
+				<!-- Footer-->
+				<footer class="border-top">
+					<div class="container px-4 px-lg-5">
+						<div class="row gx-4 gx-lg-5 justify-content-center">
+							<div class="col-md-10 col-lg-8 col-xl-7">
+								<ul class="list-inline text-center">
+									<li class="list-inline-item"><a href="#!"> <span
+											class="fa-stack fa-lg"> <i
+												class="fas fa-circle fa-stack-2x"></i> <i
+												class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+										</span>
+									</a></li>
+									<li class="list-inline-item"><a href="#!"> <span
+											class="fa-stack fa-lg"> <i
+												class="fas fa-circle fa-stack-2x"></i> <i
+												class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+										</span>
+									</a></li>
+									<li class="list-inline-item"><a href="#!"> <span
+											class="fa-stack fa-lg"> <i
+												class="fas fa-circle fa-stack-2x"></i> <i
+												class="fab fa-github fa-stack-1x fa-inverse"></i>
+										</span>
+									</a></li>
+								</ul>
+								<div class="small text-center text-muted fst-italic">Yedam
+									&copy; Project 2021</div>
+							</div>
+						</div>
+					</div>
+				</footer>
+				<!-- Bootstrap core JS-->
+				<script
+					src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+				<!-- Core theme JS-->
+				<script src="js/scripts.js"></script>
+</body>
 </html>
