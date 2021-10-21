@@ -16,6 +16,10 @@
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
 	crossorigin="anonymous"></script>
+<script src="js/scripts.js"></script>
+<script src="js/jquery-3.6.0.min.js"></script>
+<script src="js/logio.js"></script>
+
 <!-- Google fonts-->
 <link
 	href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic"
@@ -29,6 +33,7 @@
 	$(document).ready(function() {
 		LogioCreate();
 	});
+	
 	</script>
 </head>
 <body>
@@ -49,9 +54,7 @@
 						href="Camping.jsp?check=Tent">Tent</a></li>
 					<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
 						href="Camping.jsp?check=SleepingBag">Sleeping Bag</a></li>
-					<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-						href="etc.html">Etc</a></li>
-					
+										
 				</ul>
 			</div>
 		</div>
