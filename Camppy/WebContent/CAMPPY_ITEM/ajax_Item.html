@@ -7,24 +7,25 @@
 </head>
 <body>
 
-	<form id="CH" method="post" enctype="multipart/form-data" onsubmit="submitAction(event)">
-	        상품번호:   <input type="text" name="num"><br>
-	        상품이름:   <input type="text" name="name"><br>
-	        상품이미지:  <input type="file" name="fileName"><br>
-	        상품정보:   <input type="text" name="img"><br>
+	<form id="CH" method="post" enctype="multipart/form-data" onsubmit="SendEvent(event)">
+	        상품번호:   <input type="text" name="i_num"><br>
+	        상품이름:   <input type="text" name="i_name"><br>
+	        상품이미지:  <input type="file" name="i_img"><br>
+	        상품정보:   <input type="text" name="i_info"><br>
 	        
 	        카테고리:   <select name="ctgr">
 	        	 <option id="tent" value="텐트">== 텐 트 ==</option>
 				 <option id="SB"   value="침낭">== 침 낭 ==</option>
 				 </select><br>
 				 
-	        상품 메이커: <input type="text" name="comp"><br>
-	        상품 국가:   <input type="text" name="cont"><br>
-	        상품 가격:   <input type="text" name="price"><br>
-	        상품 할인율:  <input type="text" name="offprice"><br>
-	        재고량:     <input type="number" name="price"><br>
+	        상품 메이커: <input type="text" name="p_comp"><br>
+	        상품 국가:   <input type="text" name="p_cont"><br>
+	        상품 가격:   <input type="text" name="ori_p"><br>
+	        상품 할인율:  <input type="text" name="off_p"><br>
+	        재고량:     <input type="number" name="stock"><br>
 
 		<input type="submit" value="등록">
+		<button>버튼</button>
 	</form>
 
 	<!-- 가지고온 내용을 리스트에 추가 -->
@@ -38,9 +39,9 @@
 			type: 'get',
 			dataType:'json',
 			success: function(result){
-				
+				console.log(result);
 				for (let data of result){
-					$('#show').append(createDiv(row));
+					$('#show').append(ScreenOutput(data));
 				}
 			},
 			error: function(out){
@@ -50,10 +51,10 @@
 	
 		function ScreenOutput (data){
 			let divData = $('<div />').addClass('data');
-			$(divRow).append(
-				$('<div />').html('<imp width = "500px" src="저장위치'+data.ITEM_IMAGE+'">'), //이미지 생성 
-				$('<div />').html(data.ITEM_NAME),  //상품이름
-				$('<div />').html(data.ORIGIN_PRICE)  //상품가격
+			$(divData).append(
+				$('<div />').html('<imp width = "500px" src="../save/'+data.i_img+'">'), //이미지 생성 
+				$('<div />').html(data.i_name),  //상품이름
+				$('<div />').html(data.ori_p)  //상품가격
 			);
 			return divData;
 		}
@@ -67,7 +68,7 @@
 			let data = new FormData(CH);
 			
 			$.ajax({
-				url: '' ,
+				url: '../AddFileServlet' ,
 				type: $('#CH').attr('method') ,
 				data: data ,
 				processData: false ,
@@ -75,13 +76,14 @@
 				dataType: 'json',
 				
 				success: function (result) {
-					alert('성공');
-					$('#show').append(createDiv(result));
-					
+					$('#show').append(ScreenOutput(result));
 					$('#frm>input').not('[type="submit"]').val(''); 
+					
+					alert('성공');
 				},
-				error: function () {
-					alert('실패');
+				error: function (e) {
+					alert('실패했습니다.');
+					console.error(e);
 				}
 			});
 		}
