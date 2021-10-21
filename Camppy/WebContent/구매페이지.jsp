@@ -25,6 +25,11 @@
 	rel="stylesheet" type="text/css" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="css/styles.css" rel="stylesheet" />
+	<script>
+	$(document).ready(function() {
+		LogioCreate();
+	});
+	</script>
 </head>
 <body>
 	  <% String select = request.getParameter("check"); %>
@@ -39,15 +44,14 @@
 				Menu <i class="fas fa-bars"></i>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ms-auto py-4 py-lg-0">
+				<ul class="navbar-nav ms-auto py-4 py-lg-0" id="mom">
 					<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
 						href="Camping.jsp?check=Tent">Tent</a></li>
 					<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
 						href="Camping.jsp?check=SleepingBag">Sleeping Bag</a></li>
 					<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
 						href="etc.html">Etc</a></li>
-					<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-						href="login.html">Login</a></li>
+					
 				</ul>
 			</div>
 		</div>
