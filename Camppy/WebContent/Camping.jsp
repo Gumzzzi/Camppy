@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
     <!DOCTYPE html>
     <html lang="en">
 
@@ -33,7 +34,9 @@
 
     <body>
     	<!-- 서블릿 에서  -->
-        <% String select = request.getParameter("check"); %>
+        <% 
+        	String select = request.getParameter("check"); 
+        %>
         
             <!-- Navigation-->
             <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
