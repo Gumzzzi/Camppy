@@ -61,14 +61,25 @@ public class SignServlet extends HttpServlet {
 		System.out.println(result+" dao.sign 결과");
 		
 		if(result.equals(id)) {
-			Cookie c = new Cookie("loginUser", URLEncoder.encode(result,"UTF-8"));
-			c.setMaxAge(3*60*60);
-			c.setPath("path=/");
-			response.addCookie(c);
-			response.sendRedirect("http://localhost/Camppy/index.html");
-		} else {
-			response.sendRedirect("http://localhost/Camppy/login.html");
+			out.println(gson.toJson(vo.getId()));
 		}
+		else {
+			out.println("중북된 id가 존재합니다");
+		}
+	
+		
+		
+		
+		
+//		if(result.equals(id)) {
+//			Cookie c = new Cookie("loginUser", URLEncoder.encode(result,"UTF-8"));
+//			c.setMaxAge(3*60*60);
+//			c.setPath("path=/");
+//			response.addCookie(c);
+//			response.sendRedirect("http://localhost/Camppy/index.html");
+//		} else {
+//			response.sendRedirect("http://localhost/Camppy/login.html");
+//		}
 		
 		
 	}

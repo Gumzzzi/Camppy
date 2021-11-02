@@ -26,9 +26,12 @@ function getCookie() {
 
 function delUserCookie() {
 
-	if(!(sessionStorage.getItem('LoginUser')=="")){
-		sessoionStorage.removeItem('LoginUser');
+	console.log(sessionStorage.getItem('LoginUser'));
+
+	if(!(sessionStorage.getItem('LoginUser')==null)){
+		sessionStorage.removeItem('LoginUser');
 	}
+	
 
 
 /*    if (!(getCookie === "")) {
@@ -57,7 +60,7 @@ function LogioCreate() {
     if(sessionStorage.getItem('LoginUser')==null) {
         login = $('<li />').attr('class', 'nav-item').attr('id', 'loginBtn')
         $(login).html(
-            '<a class="nav-link px-lg-3 py-3 py-lg-4">Login</a>'
+            '<a class="nav-link px-lg-3 py-3 py-lg-4" href="login.html">Login</a>'
         );
         ul.append(login);
 
@@ -84,6 +87,6 @@ function LogioCreate() {
 
 // 쿠키 테스트용 함수 value가 존재한다면 true 없다면 false 를 반환한다
 
-function cookieCheck() {
-    console.log(!(getCookie() === ""))
+function Check() {
+    console.log(sessionStorage.getItem('LoginUser'));
 }

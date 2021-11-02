@@ -32,17 +32,54 @@
 
 
 
+
 <script>
 	$(document).ready(function() {
 		LogioCreate();
 	});
 
+	function sign() {
+		let id, pw
+		id = $('#sign_id').val();
+		pw = $('#sign_pw').val();
+		em = $('#sign_em').val();
+		pn = $('#sign_pn').val();
+
+		$.ajax({
+
+			url : './SignServlet',
+			data : {
+				sign_id : id,
+				sign_pw : pw,
+				sign_em : em,
+				sign_pn : pn
+			},
+			type : 'get',
+			datatype : 'json',
+			success : function(result) {
+				console.log(result)
+				if (result == id) {
+					alert("로그인 성공");
+					sessionStorage.setItem('LoginUser', `${result}`);
+					console.log(sessionStorage.getItem('LoginUser')
+							+ "session value");
+					window.location.href = "index.html";
+				} else {
+					alert("중복된 ID가 존재합니다");
+				}
+			},
+			error : function(reject) {
+				console.log(reject);
+			}
+		});
+	}
+
 	function login() {
-		
+
 		let id, pw
 		id = $('#user_id').val();
 		pw = $('#user_password').val();
-		
+
 		$.ajax({
 			url : './LoginServlet',
 			data : {
@@ -53,24 +90,36 @@
 			datatype : 'json',
 			success : function(result) {
 				console.log(result)
-				if(result==id){
+				if (result == id) {
 					alert("로그인 성공");
 					sessionStorage.setItem('LoginUser', `${result}`);
 					console.log(sessionStorage.getItem('LoginUser'));
-					window.location.href="index.html";
+					window.location.href = "index.html";
 				} else {
 					alert("ID, 비밀번호를 확인해주세요");
 				}
 			},
 			error : function(reject) {
 				console.log(reject);
-				
+
 			}
 
-		})
+		});
 
 	}
-	
+
+	function Check() {
+		console.log(sessionStorage.getItem('LoginUser'))
+	}
+
+	function delUserCookie() {
+
+		console.log(sessionStorage.getItem('LoginUser'));
+
+		if (!(sessionStorage.getItem('LoginUser') == null)) {
+			sessionStorage.removeItem('LoginUser');
+		}
+	}
 </script>
 
 </head>
@@ -95,7 +144,9 @@
 						href="tent.html">Tent</a></li>
 					<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
 						href="sleepingbag.html">Sleeping Bag</a></li>
-				
+					<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
+						onclick="delUserCookie()">check</a></li>
+
 					<!--  로그인 버튼 하지만 로그인 페이지에서 이게 또 들어갈 필요가 있을까? -->
 					<!-- 
 					<li class="nav-item" id="loginBtn">
@@ -135,24 +186,26 @@
 				<div class="row">
 					<div class="col-md-6 mb-3">
 						<label for="userid">아이디</label> <input type="text"
-							class="form-control" name="id" placeholder="" value="" required>
+							class="form-control" name="sign_id" placeholder="" value=""
+							required>
 						<div class="invalid-feedback">아이디를 입력해주세요.</div>
 					</div>
 					<div class="col-md-6 mb-3">
 						<label for="pwd">암호</label> <input type="password"
-							class="form-control" name="pwd" placeholder="" value="" required>
+							class="form-control" name="sign_pw" placeholder="" value=""
+							required>
 						<div class="invalid-feedback">암호를 입력해주세요.</div>
 					</div>
 				</div>
 				<div class="mb-3">
 					<label for="email">이메일</label> <input type="email"
-						class="form-control" name="email" placeholder="you@example.com"
+						class="form-control" name="sign_em" placeholder="you@example.com"
 						required>
 					<div class="invalid-feedback">이메일을 입력해주세요.</div>
 				</div>
 				<div class="mb-3">
 					<label for="pnum">핸드폰번호</label> <input type="text"
-						class="form-control" name="pnum" placeholder="010-1111-2222"
+						class="form-control" name="sign_pn" placeholder="010-1111-2222"
 						required>
 					<div class="invalid-feedback">핸드폰 번호를 입력해주세요.</div>
 				</div>
@@ -163,7 +216,7 @@
 						for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
 				</div>
 				<div class="mb-4"></div>
-				<button class="btn btn-primary btn-lg btn-block" type="submit">가입완료</button>
+				<button class="btn btn-primary btn-lg btn-block" type="button">가입완료</button>
 			</form>
 
 
@@ -184,11 +237,13 @@
 						<!-- 로그인 폼 -->
 						<form id="loginform" action="LoginServlet" method="post">
 							<div class="form-floating">
-								<input class="form-control" id="user_id" name="user_id" type="text"
-									placeholder="Enter yout Id..." /> <label for="password">Id</label>
+								<input class="form-control" id="user_id" name="user_id"
+									type="text" placeholder="Enter yout Id..." /> <label
+									for="password">Id</label>
 							</div>
 							<div class="form-floating">
-								<input class="form-control" id="user_password" name="user_password" type="password"
+								<input class="form-control" id="user_password"
+									name="user_password" type="password"
 									placeholder="Enter yout Password..." /> <label for="password">password</label>
 							</div>
 							<br />
@@ -282,7 +337,6 @@
 
 
 	<script src="js/modal.js"></script>
-
 
 
 

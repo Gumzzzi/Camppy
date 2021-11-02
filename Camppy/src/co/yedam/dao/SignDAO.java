@@ -30,13 +30,6 @@ public class SignDAO extends DAO {
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
 		sql = "insert into camppy_user values(?,?,sysdate,?,?)";
 		
 		try {
